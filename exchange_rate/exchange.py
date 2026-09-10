@@ -42,9 +42,17 @@ if font_base64:
             font-style: normal;
         }}
         
-        /* Streamlit 전체 글꼴을 에이투지체로 지정 */
-        html, body, [class*="css"], div, p, span, h1, h2, h3, h4, h5, h6, input, button, select, label {{
+        /* 1. 일반 텍스트 요소에만 커스텀 폰트 적용 */
+        html, body, [class*="css"], div, p, h1, h2, h3, h4, h5, h6, input, button, select, label {{
             font-family: 'AtoZ', sans-serif !important;
+        }}
+
+        /* 2. Streamlit 기본 아이콘 폰트 보호 (텍스트 깨짐 현상 방지) */
+        span:not([data-testid="stIconMaterial"]):not([class*="material-icons"]) {{
+            font-family: 'AtoZ', sans-serif !important;
+        }}
+        [data-testid="stIconMaterial"], .material-symbols-rounded, .material-symbols-outlined, [class*="material-icons"] {{
+            font-family: 'Material Symbols Rounded', 'Material Icons' !important;
         }}
 
         .metric-card {{
@@ -65,7 +73,6 @@ if font_base64:
     """
     st.markdown(font_css, unsafe_allow_html=True)
 else:
-    # 폰트 파일이 없을 경우 기본 스타일만 적용
     st.markdown("""
     <style>
         .metric-card {
@@ -203,7 +210,7 @@ with st.sidebar:
 # -------------------------------------------------------------
 # 5. 메인 대시보드 (환율 계산기)
 # -------------------------------------------------------------
-st.title("🧭 글로벌 환율 계산기")
+st.title("🧭 글로벌 환율 계산기 & 여행 퀵시트")
 st.caption("한국(KRW), 미국(USD), 일본(JPY), 유럽(EUR), 중국(CNY) 실시간 환율 정보")
 
 # 세션 상태 초기화 (통화 스왑용)
