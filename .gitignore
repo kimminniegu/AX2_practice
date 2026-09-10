@@ -1,0 +1,2 @@
+.env
+# gitignore랑 같은 경로에 있는 .env를 찾아와라
