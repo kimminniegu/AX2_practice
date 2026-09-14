@@ -1,0 +1,9 @@
+[theme]
+font = "sans serif"
+
+# 사용자 커스텀 폰트 지정
+[[theme.fontFaces]]
+family = "AtoZ"
+url = "app/static/에이투지체-4Regular.otf"
+weight = "normal"
+style = "normal"
